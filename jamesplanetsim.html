@@ -1,5 +1,128 @@
-jamesplanetsim.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 James Henry's Planet Adventure</title>
+    <style>
+        body {
+            background-color: #222;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
 
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #ffcc00;
+        }
+
+        .rocket {
+            display: inline-block;
+            animation: moveRocket 4s infinite linear;
+        }
+
+        @keyframes moveRocket {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 15px;
+            margin-top: 20px;
+            font-size: 16px;
+            text-decoration: none;
+            background-color: #ffcc00;
+            color: #222;
+            border-radius: 8px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        a:hover {
+            background-color: #ffdb4d;
+        }
+
+        ol {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #ffcc00;
+        }
+
+        #stars {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .star {
+            position: absolute;
+            background-color: #fff;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            animation: twinkle 1s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive styles for smaller screens */
+        @media screen and (max-width: 600px) {
+            h1 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+
+            a {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            li {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>
+    🌌 Welcome to James Henry's Planet Simulator 
+    <span class="rocket">🚀</span>
+</h1>
 <p>This cosmic adventure simulates the orbit and gravitation of 8 planets!✨</p>
 <div>
     <img src="mercury_cartoon.png" alt="Mercury" style="width: 32px; height: 32px; display: inline-block;">
