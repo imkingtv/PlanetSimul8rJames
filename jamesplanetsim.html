@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 James Henry's Planet Adventure</title>
+    <style>
+        body {
+            background-color: #222;
+            color: #fff;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #ffcc00; /* Fun yellow color */
+        }
+
+        .rocket {
+            display: inline-block;
+            animation: moveRocket 4s infinite linear; /* Added moving animation to the rocket emoji */
+        }
+
+        @keyframes moveRocket {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px; /* Increased space between description and steps */
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 20px;
+            text-decoration: none;
+            background-color: #ffcc00;
+            color: #222;
+            border-radius: 8px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        a:hover {
+            background-color: #ffdb4d; /* Lighter yellow on hover */
+        }
+
+        ol {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #ffcc00; /* Yellow color for numbers */
+        }
+
+        #stars {
+            display: none; /* Hide stars by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .star {
+            position: absolute;
+            background-color: #fff;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            animation: twinkle 1s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>
+    🌌 Welcome to James Henry's Planet Simulator 
+    <span class="rocket">🚀</span>
+</h1>
+
+<p>This cosmic adventure simulates the orbit and gravitation of 8 planets!✨</p>
+<div>
+    <img src="mercury_cartoon.png" alt="Mercury" style="width: 32px; height: 32px; display: inline-block;">
+    <span style="vertical-align: top;">Mercury</span>
+  </div>
+
+
+<div>
+  <img src="venus_cartoon.png" alt="Venus" style="width: 32px; height: 32px; display: inline-block;">
+  <span style="vertical-align: top;">Venus</span>
+</div>
+
+<div>
+    <img src="earth_cartoon.png" alt="Earth" style="width: 32px; height: 32px; display: inline-block;">
+    <span style="vertical-align: top;">Earth</span>
+  </div>
+<div>
+    <img src="mars_cartoon.png" alt="Mars" style="width: 32px; height: 32px; display: inline-block;">
+    <span style="vertical-align: top;">Mars</span>
+  </div>
+
+
+<div>
+    <img src="jupiter_cartoon.png" alt="Jupiter" style="width: 32px; height: 32px; display: inline-block;">
+    <span style="vertical-align: top;">Jupiter</span>
+  </div>
+  
+  <div>
+    <img src="saturn_cartoon.png" alt="Saturn" style="width: 32px; height: 32px; display: inline-block;">
+    <span style="vertical-align: top;">Saturn</span>
+  </div>
+
+<div>
+    <img src="uranus_cartoon.png" alt="Uranus" style="width: 32px; height: 32px; display: inline-block;">
+    <span style="vertical-align: top;">Uranus</span>
+  </div>
+<div>
+    <img src="neptune_cartoon.png" alt="Neptune" style="width: 32px; height: 32px; display: inline-block;">
+    <span style="vertical-align: top;">Neptune</span>
+  </div>
+
+<!-- PUT THE GLOWSCRIPT HTML HERE, RIGHT??? HOPEFULLY! -->
+<a href="Project2-SevenPlanetsOrbiting.html" target="_blank">Launch the Adventure</a>
+
+<!-- Description Section -->
+<p>I made this vPython Program to demonstrate how each planet orbits around the sun. Follow these steps to experience the adventure:
+    <ol>
+        <li style="color: #ffcc00;">STEPS:</li>
+        <li style="color: #ffffff;">1: ZOOM IN & CLICK ON EACH PLANET TO FOLLOW ITS JOURNEY.</li>
+        <li style="color: #ffffff;">2: Scroll down to see the graph displaying the planet's position and time at each point.</li>
+        <li style="color: #ffffff;">3: Enjoy!</li>
+        <li style="color: #ffffff;">4: Don't click the play button....lol</li>
+        <li style="color: #ffffff;">- James 🚀</li>
+    </ol>
+</p>
+
+<audio id="background-music" src="Cantina_Band.mp3" preload="auto"></audio>
+
+<button id="music-control" onclick="toggleMusic()">Play Music</button>
+
+<div id="stars"></div>
+
+<script>
+    var audio = document.getElementById("background-music");
+    var musicControl = document.getElementById("music-control");
+    var starsContainer = document.getElementById("stars");
+
+    audio.addEventListener("ended", function () {
+        musicControl.innerHTML = "Play Music";
+    });
+
+    function toggleMusic() {
+        if (audio.paused) {
+            audio.play()
+                .then(function () {
+                    console.log("Audio played successfully");
+                    musicControl.innerHTML = "Pause Music";
+                    starsContainer.style.display = "block"; // Show stars when music is playing
+                })
+                .catch(function (error) {
+                    console.error("Error playing audio:", error);
+                });
+        } else {
+            audio.pause();
+            audio.currentTime = 0; // Reset the audio to the beginning
+            musicControl.innerHTML = "Play Music";
+            starsContainer.style.display = "none"; // Hide stars when music is paused
+        }
+    }
+
+    // Function to create stars
+    function createStars() {
+        for (let i = 0; i < 50; i++) {
+            const star = document.createElement("div");
+            star.className = "star";
+            star.style.top = Math.random() * 100 + "vh";
+            star.style.left = Math.random() * 100 + "vw";
+            starsContainer.appendChild(star);
+        }
+    }
+
+    createStars(); // Create stars initially
+</script>
+</body>
+</html>
